@@ -16,3 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login','\App\Livewire\Auth\Login')->name('login');
+Route::get('/register','\App\Livewire\Auth\Register')->name('register');
+
+Route::post('/logout', function(){
+    Auth::logout();
+    return redirect('/');
+})->name('logout')->middleware('auth');
+
+Route::prefix('teacher')->middleware(['auth','teacher'])->group(function () {
+    Route::get('/dashboard','\App\Livewire\Teacher\Dashboard\Dashboard');
+});
+
+Route::prefix('student')->middleware(['auth','student'])->group(function () {
+    Route::get('/dashboard','\App\Livewire\Student\Dashboard\Dashboard');
+});

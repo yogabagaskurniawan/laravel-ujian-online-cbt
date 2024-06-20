@@ -27,5 +27,18 @@ class DatabaseSeeder extends Seeder
         $teacher->phone = '0123456';
         $teacher->address = 'Pekalongan';
         $teacher->save();
+
+        $user_student = new User;
+        $user_student->email = 'student@example.com';
+        $user_student->password = Hash::make('admin123');
+        $user_student->role = 'student';
+        $user_student->save();
+
+        $student = new Detail_user();
+        $student->user_id = $user_student->id;
+        $student->name = 'Adi Warno';
+        $student->phone = '0123456';
+        $student->address = 'Jakarta';
+        $student->save();
     }
 }
