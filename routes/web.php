@@ -27,6 +27,14 @@ Route::post('/logout', function(){
 
 Route::prefix('teacher')->middleware(['auth','teacher'])->group(function () {
     Route::get('/dashboard','\App\Livewire\Teacher\Dashboard\Dashboard');
+
+    Route::get('/category/list-category', '\App\Livewire\Teacher\Category\CategoryList');
+    Route::get('/category/add-category', '\App\Livewire\Teacher\Category\CategoryAdd');
+    Route::get('/category/edit-category/{uid}', '\App\Livewire\Teacher\Category\CategoryEdit')->name('categoryEdit');
+
+    Route::get('/course/list-course', '\App\Livewire\Teacher\Course\CourseList');
+    Route::get('/course/add-course', '\App\Livewire\Teacher\Course\CourseAdd');
+    Route::get('/course/edit-course/{id}', '\App\Livewire\Teacher\Course\CourseEdit');
 });
 
 Route::prefix('student')->middleware(['auth','student'])->group(function () {

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Teacher</title>
+    <title>Student</title>
     <link rel="icon" type="image/x-icon" href="/admin/src/assets/img/favicon.ico"/>
     <link href="/admin/layouts/modern-light-menu/css/light/loader.css" rel="stylesheet" type="text/css" />
     <link href="/admin/layouts/modern-light-menu/css/dark/loader.css" rel="stylesheet" type="text/css" />
@@ -935,5 +935,9 @@
     <script src="/admin/src/assets/js/dashboard/dash_1.js"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <x-livewire-alert::scripts />
+    <x-livewire-alert::flash />
 </body>
 </html>
