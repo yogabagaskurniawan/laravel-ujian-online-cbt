@@ -37,7 +37,7 @@ Route::prefix('teacher')->middleware(['auth','teacher'])->group(function () {
     Route::get('/course/edit-course/{uid}', '\App\Livewire\Teacher\Course\CourseEdit')->name('courseEdit');
 
     Route::get('/course/list-course/manage/{uid}', '\App\Livewire\Teacher\Course\Manage\ManageList')->name('manageList');
-    Route::get('/course/list-course/add-manage', '\App\Livewire\Teacher\Course\Manage\ManageAdd');
+    Route::get('/course/list-course/add-manage/{uid}', '\App\Livewire\Teacher\Course\Manage\ManageAdd')->name('manageAdd');;
     Route::get('/course/list-course/edit-manage/{uid}', '\App\Livewire\Teacher\Course\Manage\ManageEdit')->name('manageEdit');
 });
 

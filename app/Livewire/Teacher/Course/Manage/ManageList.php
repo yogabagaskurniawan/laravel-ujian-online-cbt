@@ -18,17 +18,11 @@ class ManageList extends Component
             abort(403, 'Unauthorized');
         }
 
-        $this->course = Course::where('uid',$uid)->first();
-
-        // Set nilai properti berdasarkan data rumah yang ditemukan
-        // if ($this->course) {
-        //     $this->name = $this->course->name;
-        //     $this->uid = $this->course->uid;
-        // }
+        $this->course = Course::where('uid',$uid)->where('user_id',auth()->user()->id)->first();
     }
     public function render()
     {
-        $questions = Question::where('course_id', $this->course->id)->latest()->search($this->search)->limit($this->limitData)->get();
+        $questions = Question::where('course_id', $this->course->id)->search($this->search)->limit($this->limitData)->get();
         return view('livewire.teacher.course.manage.manage-list', compact('questions'));
     }
 }

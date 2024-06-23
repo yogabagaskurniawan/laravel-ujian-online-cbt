@@ -13,7 +13,7 @@ class CourseList extends Component
     public $search = '';
     public function render()
     {
-        $courses = Course::latest()->search($this->search)->paginate(10);
+        $courses = Course::where('user_id',auth()->user()->id)->latest()->search($this->search)->paginate(10);
         return view('livewire.teacher.course.course-list', compact('courses'));
     }
 }
