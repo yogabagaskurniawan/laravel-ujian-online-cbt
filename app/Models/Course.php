@@ -23,4 +23,8 @@ class Course extends Model
         }
         return $query;
     }
+    public function getQuestion()
+    {
+        return $this->hasMany(Question::class);
+    }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('course_id');
             $table->integer('user_id');
-            $table->string('result');
+            $table->enum('status',['not_started','fail', 'succeed'])->default('not_started');
             $table->timestamps();
         });
     }

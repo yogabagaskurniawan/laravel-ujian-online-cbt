@@ -3,7 +3,7 @@
         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a>Manage Kelas</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Kelas Detail</li>
+                <li class="breadcrumb-item active" aria-current="page">Kelas Murid</li>
             </ol>
         </nav>
     </div>
@@ -25,21 +25,21 @@
                         </div>
                     </div>
                 </div>
-                <h5 class="mt-3">Kelas Test</h5>
+                <h5 class="mt-3">Semua Murid</h5>
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('manageAdd', $course->uid) }}" class="btn btn-secondary mb-4 _effect--ripple waves-effect waves-light" type="button">
+                    <a href="{{ route('studentAdd', $course->uid) }}" class="btn btn-secondary mb-4 _effect--ripple waves-effect waves-light" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" class="mb-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-plus"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
-                        Tambah soal
+                        Tambah Murid
                     </a>
                     <div class="filtered-list-search mb-2 w-50">
                         <form class="form-inline my-lg-0 justify-content-center">
                             <div class="w-100">
-                                <input wire:model.live="search" type="text" class="py-2 w-100 form-control product-search br-30" id="input-search" placeholder="Cari soal...">
+                                <input wire:model.live="search" type="text" class="py-2 w-100 form-control product-search br-30" id="input-search" placeholder="Cari nama murid...">
                             </div>
                         </form>
                     </div>
                 </div>
-                <div id="tableCustomBasic" class="col-lg-12 col-12 layout-spacing">
+                {{-- <div id="tableCustomBasic" class="col-lg-12 col-12 layout-spacing">
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <tbody>
@@ -73,7 +73,7 @@
                             <a wire:click.prevent="addLimitData" class="mt-2 btn btn-sm p-1 btn-info btn-sm">Selanjutnya</a>
                         @endif
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

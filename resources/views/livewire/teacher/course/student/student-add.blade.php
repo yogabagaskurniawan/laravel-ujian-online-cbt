@@ -3,8 +3,8 @@
         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a>Manage Kelas</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('manageList', $course->uid) }}">Kelas Detail</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Tambah Soal</li>
+                <li class="breadcrumb-item"><a href="{{ route('studentList', $course->uid) }}">Kelas Murid</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tambah Murid</li>
             </ol>
         </nav>
     </div>
@@ -26,34 +26,18 @@
                         </div>
                     </div>
                 </div>
-                <h5 class="mt-3">Menambahkan Pertanyaan Baru</h5>
-                <form wire:submit.prevent="addQuestion">
+                <h5 class="mt-3">Menambahkan Murid Baru</h5>
+                <form class="" wire:submit="addStudent">
                     <div class="row mb-4">
                         <div class="col-sm-12">
-                            <label for="question">Pertanyaan</label>
-                            <input type="text" class="form-control" wire:model="question" placeholder="Tulis pertanyaan di sini">
-                            @error('question') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
-                        <div class="col-sm-12">
-                            <label for="answers" class="mb-0 mt-3">Jawaban</label>
-                            @for ($i = 1; $i <= 4; $i++)
-                                <div class="d-flex align-items-center mt-3">
-                                    <input type="text" class="form-control me-2" wire:model="answers.{{ $i }}" wire:loading.attr="disabled" placeholder="tulis opsi jawaban disini">
-                                    <div class="form-check form-check-info w-full">
-                                        <input class="form-check-input" wire:model="correctAnswer" type="radio" value="{{ $i }}" id="form-check-info{{ $i }}">
-                                        <label class="form-check-label" for="form-check-info{{ $i }}">
-                                            benar
-                                        </label>
-                                    </div>
-                                </div>
-                                @error('answers.' . $i) <span class="text-danger">{{ $message }}</span> @enderror
-                            @endfor
+                            <label for="fullName">Email Murid</label>
+                            <input type="text" class="form-control" wire:model="email" wire:loading.attr="disabled" placeholder="tambahkan email murid disini...">
+                            @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary _effect--ripple waves-effect waves-light">Tambah Soal</button>
+                    <button class="btn btn-info btn-lg mb-2 me-4 _effect--ripple waves-effect waves-light" wire:loading><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader spin me-2"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>  Loading</button>
+                    <button type="submit" class="btn btn-primary _effect--ripple waves-effect waves-light " wire:loading.remove>Tambah Murid</button>
                 </form>
-                
-                
             </div>
         </div>
     </div>

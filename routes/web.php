@@ -34,11 +34,15 @@ Route::prefix('teacher')->middleware(['auth','teacher'])->group(function () {
 
     Route::get('/course/list-course', '\App\Livewire\Teacher\Course\CourseList');
     Route::get('/course/add-course', '\App\Livewire\Teacher\Course\CourseAdd');
-    Route::get('/course/edit-course/{uid}', '\App\Livewire\Teacher\Course\CourseEdit')->name('courseEdit');
+    Route::get('/course/list-course/edit-course/{uid}', '\App\Livewire\Teacher\Course\CourseEdit')->name('courseEdit');
 
     Route::get('/course/list-course/manage/{uid}', '\App\Livewire\Teacher\Course\Manage\ManageList')->name('manageList');
     Route::get('/course/list-course/add-manage/{uid}', '\App\Livewire\Teacher\Course\Manage\ManageAdd')->name('manageAdd');;
     Route::get('/course/list-course/edit-manage/{uid}', '\App\Livewire\Teacher\Course\Manage\ManageEdit')->name('manageEdit');
+    
+    Route::get('/course/list-course/student/{uid}', '\App\Livewire\Teacher\Course\Student\StudentList')->name('studentList');
+    Route::get('/course/list-course/add-student/{uid}', '\App\Livewire\Teacher\Course\Student\StudentAdd')->name('studentAdd');;
+    Route::get('/course/list-course/edit-student/{uid}', '\App\Livewire\Teacher\Course\Student\StudentEdit')->name('studentEdit');
 });
 
 Route::prefix('student')->middleware(['auth','student'])->group(function () {

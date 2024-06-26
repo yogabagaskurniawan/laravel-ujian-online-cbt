@@ -8,7 +8,7 @@ use Livewire\Component;
 use App\Models\Question;
 use App\Models\Question_choice;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-
+use Ramsey\Uuid\Uuid;
 
 class ManageAdd extends Component
 {
@@ -33,18 +33,19 @@ class ManageAdd extends Component
     public function addQuestion()
     {
         $validatedData = $this->validate([
-            'question' => 'required|string',
-            'answers.1' => 'required|string',
-            'answers.2' => 'required|string',
-            'answers.3' => 'required|string',
-            'answers.4' => 'required|string',
+            'question' => 'required',
+            'answers.1' => 'required',
+            'answers.2' => 'required',
+            'answers.3' => 'required',
+            'answers.4' => 'required',
             'correctAnswer' => 'required|in:1,2,3,4'
         ]);
 
         if ($validatedData) {
             $question = Question::create([
                 'course_id' => $this->course->id,
-                'ask' => $this->question
+                'ask' => $this->question,
+                'uid' => Uuid::uuid4()->toString(),
             ]);
 
             foreach ($this->answers as $key => $answer) {
