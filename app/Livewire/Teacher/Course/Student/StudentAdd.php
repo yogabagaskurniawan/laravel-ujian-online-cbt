@@ -36,12 +36,12 @@ class StudentAdd extends Component
                 // Tambahkan murid ke dalam tabel Test_result
                 Test_result::create([
                     'course_id' => $this->course->id,
-                    'user_id' => $user->id
+                    'student_id' => $user->id
                 ]);
     
                 $this->flash('success', 'Murid berhasil ditambahkan');
             } else {
-                // Jika user tidak ditemukan (seharusnya tidak terjadi karena sudah divalidasi di atas)
+                // Jika user tidak ditemukan 
                 $this->flash('error', 'Email tidak ditemukan di dalam sistem');
             }
     

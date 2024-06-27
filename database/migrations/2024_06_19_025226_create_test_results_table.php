@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('test_results', function (Blueprint $table) {
             $table->id();
             $table->integer('course_id');
-            $table->integer('user_id');
+            $table->integer('student_id');
             $table->enum('status',['not_started','fail', 'succeed'])->default('not_started');
+            $table->string('certificate')->nullable();
             $table->timestamps();
         });
     }

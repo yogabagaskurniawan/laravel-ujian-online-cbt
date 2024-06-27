@@ -3,8 +3,9 @@
 namespace App\Livewire\Teacher\Course\Manage;
 
 use App\Models\Course;
-use App\Models\Question;
 use Livewire\Component;
+use App\Models\Question;
+use App\Models\Test_result;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ManageList extends Component
@@ -12,6 +13,7 @@ class ManageList extends Component
     use LivewireAlert;
     public $limitData, $course;
     public $search = '';
+    public $studentCount;
     public function mount($uid)
     {
         $this->limitData = 10;
@@ -21,6 +23,7 @@ class ManageList extends Component
         }
 
         $this->course = Course::where('uid',$uid)->where('user_id',auth()->user()->id)->first();
+        $this->studentCount = Test_result::where('course_id', $this->course->id)->count();
     }
     public function render()
     {

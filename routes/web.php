@@ -47,4 +47,8 @@ Route::prefix('teacher')->middleware(['auth','teacher'])->group(function () {
 
 Route::prefix('student')->middleware(['auth','student'])->group(function () {
     Route::get('/dashboard','\App\Livewire\Student\Dashboard\Dashboard');
+
+    Route::get('/course/list-course', '\App\Livewire\Student\Course\CourseList');
+
+    Route::get('/course/{uid}', '\App\Livewire\Student\Course\TestCourse\TestCourse')->name('courseTest');
 });

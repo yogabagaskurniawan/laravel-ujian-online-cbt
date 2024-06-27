@@ -4,35 +4,32 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>bagasCBT</title>
+    <title>Test Kelas</title>
     <link rel="icon" type="image/x-icon" href="/admin/src/assets/img/favicon.ico"/>
     <link href="/admin/layouts/modern-light-menu/css/light/loader.css" rel="stylesheet" type="text/css" />
     <link href="/admin/layouts/modern-light-menu/css/dark/loader.css" rel="stylesheet" type="text/css" />
     <script src="/admin/layouts/modern-light-menu/loader.js"></script>
-
+    
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <link href="/admin/src/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    
     <link href="/admin/layouts/modern-light-menu/css/light/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/src/assets/css/light/authentication/auth-boxed.css" rel="stylesheet" type="text/css" />
+    
     <link href="/admin/layouts/modern-light-menu/css/dark/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/src/assets/css/dark/authentication/auth-boxed.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
-
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <link href="/admin/src/plugins/src/apex/apexcharts.css" rel="stylesheet" type="text/css">
-    <link href="/admin/src/assets/css/light/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/src/assets/css/dark/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
-    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-
 </head>
 <body class="layout-boxed">
     <!--  BEGIN NAVBAR  -->
-    <div class="header-container container-xxl">
+    <div class="header-container container-xxl" style="width:100%; left:5px">
         <header class="header navbar navbar-expand-sm expand-header">
 
             <a href="javascript:void(0);" class="sidebarCollapse">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </a>
-
+            <h5>Kelas {{ auth()->user()->getTestResult[0]->getCourse->name }}</h5>
             <ul class="navbar-item flex-row ms-lg-auto ms-0">
 
                 <li class="nav-item theme-toggle-item">
@@ -178,32 +175,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="dropdown-item">
-                            <a href="user-profile.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> <span>Profile</span>
-                            </a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="app-mailbox.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg> <span>Inbox</span>
-                            </a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="auth-boxed-lockscreen.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> <span>Lock Screen</span>
-                            </a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();" class="pages">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> <span>Log Out</span>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                        </a>
-                        </div>
                     </div>
                     
                 </li>
@@ -211,135 +182,10 @@
         </header>
     </div>
     <!--  END NAVBAR  -->
-
-    <!--  BEGIN MAIN CONTAINER  -->
     <div class="main-container" id="container">
 
         <div class="overlay"></div>
         <div class="search-overlay"></div>
-
-        <!--  BEGIN SIDEBAR  -->
-        <div class="sidebar-wrapper sidebar-theme">
-
-            <nav id="sidebar">
-
-                <div class="navbar-nav theme-brand flex-row  text-center">
-                    <div class="nav-logo">
-                        <div class="nav-item theme-logo">
-                        </div>
-                        <div class="nav-item theme-text">
-                            <a href="./index.html" class="nav-link"> bagasCBT </a>
-                        </div>
-                    </div>
-                    <div class="nav-item sidebar-toggle">
-                        <div class="btn-toggle sidebarCollapse">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="profile-info">
-                    <div class="user-info">
-                        <div class="profile-img">
-                            <img src="/admin/src/assets/img/profile-30.png" alt="avatar">
-                        </div>
-                        <div class="profile-content">
-                            <h6 class="">{{ auth()->user()->getDetailUser->name }}</h6>
-                            <p class="">{{ auth()->user()->email }}</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <ul class="list-unstyled menu-categories" id="accordionExample">
-                    @if (Auth::user()->role == 'teacher')
-                        <li class="menu @if(Request::segment(2) == 'dashboard') active @endif">
-                            <a href="{{ ('/teacher/dashboard') }}" aria-expanded="false" class="dropdown-toggle">
-                                <div class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                    <span>Overview</span>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="menu  @if(Request::segment(2) == 'category') active @endif">
-                            <a href="#category" data-bs-toggle="collapse" @if(Request::segment(2) == 'category') aria-expanded="true" @endif class="dropdown-toggle">
-                                <div class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>                                <span>Kategory</span>
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                                </div>
-                            </a>
-                            <ul class="collapse submenu list-unstyled @if(Request::segment(2) == 'category') show @endif" id="category" data-bs-parent="#accordionExample">
-                                <li class="@if(Request::segment(3) == 'add-category') active @endif" >
-                                    <a href="{{ ('/teacher/category/add-category') }}"> Tambah Kategory</a>
-                                </li>
-                                <li class="@if(Request::segment(3) == 'list-category') active @endif">
-                                    <a href="{{ ('/teacher/category/list-category') }}">List Kategory</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="menu  @if(Request::segment(2) == 'course') active @endif">
-                            <a href="#course" data-bs-toggle="collapse" @if(Request::segment(2) == 'course') aria-expanded="true" @endif class="dropdown-toggle">
-                                <div class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg>                                <span>Kelas</span>
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                                </div>
-                            </a>
-                            <ul class="collapse submenu list-unstyled @if(Request::segment(2) == 'course') show @endif" id="course" data-bs-parent="#accordionExample">
-                                <li class="@if(Request::segment(3) == 'add-course') active @endif" >
-                                    <a href="{{ ('/teacher/course/add-course') }}"> Tambah Kelas</a>
-                                </li>
-                                <li class="@if(Request::segment(3) == 'list-course') active @endif">
-                                    <a href="{{ ('/teacher/course/list-course') }}">List Kelas</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="menu">
-                            <a href="./app-chat.html" aria-expanded="false" class="dropdown-toggle">
-                                <div class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                                    <span>Chat</span>
-                                </div>
-                            </a>
-                        </li>
-                    @elseif(Auth::user()->role == 'student')
-                        <li class="menu @if(Request::segment(2) == 'dashboard') active @endif">
-                            <a href="{{ ('/student/dashboard') }}" aria-expanded="false" class="dropdown-toggle">
-                                <div class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                    <span>Overview</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="menu @if(Request::segment(2) == 'course') active @endif">
-                            <a href="{{ ('/student/course/list-course') }}" aria-expanded="false" class="dropdown-toggle">
-                                <div class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg>                                
-                                    <span>Kelas</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="menu">
-                            <a href="./app-chat.html" aria-expanded="false" class="dropdown-toggle">
-                                <div class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                                    <span>Chat</span>
-                                </div>
-                            </a>
-                        </li>
-                    @endif
-                </ul>
-                
-            </nav>
-
-        </div>
-        <!--  END SIDEBAR  -->
-
         <!--  BEGIN CONTENT AREA  -->
         <div id="content" class="main-content">
             <div class="layout-px-spacing">
@@ -359,26 +205,13 @@
             <!--  END FOOTER  -->
         </div>
         <!--  END CONTENT AREA  -->
-
     </div>
-    <!-- END MAIN CONTAINER -->
 
-    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="/admin/src/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/admin/src/plugins/src/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="/admin/src/plugins/src/mousetrap/mousetrap.min.js"></script>
-    <script src="/admin/src/plugins/src/waves/waves.min.js"></script>
-    <script src="/admin/layouts/modern-light-menu/app.js"></script>
-    <!-- END GLOBAL MANDATORY SCRIPTS -->
-
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-    <script src="/admin/src/plugins/src/apex/apexcharts.min.js"></script>
-    <script src="/admin/src/assets/js/dashboard/dash_1.js"></script>
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <x-livewire-alert::scripts />
     <x-livewire-alert::flash />
+
 </body>
 </html>
