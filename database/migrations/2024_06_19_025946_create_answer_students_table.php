@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('answer_students', function (Blueprint $table) {
             $table->id();
             $table->integer('course_id');
-            $table->integer('questions_id');
-            $table->integer('question_choices_id');
+            $table->integer('question_id');
+            $table->integer('question_choice_id');
+            $table->integer('student_id');
+            $table->boolean('is_correct');
             $table->timestamps();
         });
     }

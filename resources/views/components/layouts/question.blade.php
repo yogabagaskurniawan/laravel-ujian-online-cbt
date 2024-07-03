@@ -19,16 +19,13 @@
     
     <link href="/admin/layouts/modern-light-menu/css/dark/plugins.css" rel="stylesheet" type="text/css" />
     <link href="/admin/src/assets/css/dark/authentication/auth-boxed.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/src/assets/css/light/pages/error/style-maintanence.css" rel="stylesheet" type="text/css">
     <!-- END GLOBAL MANDATORY STYLES -->
 </head>
 <body class="layout-boxed">
     <!--  BEGIN NAVBAR  -->
     <div class="header-container container-xxl" style="width:100%; left:5px">
         <header class="header navbar navbar-expand-sm expand-header">
-
-            <a href="javascript:void(0);" class="sidebarCollapse">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </a>
             <h5>Kelas {{ auth()->user()->getTestResult[0]->getCourse->name }}</h5>
             <ul class="navbar-item flex-row ms-lg-auto ms-0">
 
@@ -187,7 +184,7 @@
         <div class="overlay"></div>
         <div class="search-overlay"></div>
         <!--  BEGIN CONTENT AREA  -->
-        <div id="content" class="main-content">
+        <div id="content" class="main-content" style="margin-left: 0%;">
             <div class="layout-px-spacing">
 
                 {{ $slot }}
