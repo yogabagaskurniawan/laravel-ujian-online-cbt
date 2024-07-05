@@ -36,8 +36,13 @@
                                 <td>{{ $myCourse->getCourse->name }}</td>
                                 <td>{{ $myCourse->created_at }}</td>
                                 <td>{{ $myCourse->getCourse->getCategory->name }}</td>
+                                {{-- <td class="text-center">
+                                </td> --}}
                                 <td class="text-center">
-                                    <a href="{{ route('courseTest', $myCourse->getCourse->uid) }}" class="btn btn-secondary" aria-expanded="false">
+                                    <a href="{{ route('rapportDetail', $myCourse->getCourse->uid) }}" class="btn btn-sm btn-success" aria-expanded="false">
+                                        Hasil test
+                                    </a>
+                                    <a href="{{ route('courseTest', $myCourse->getCourse->uid) }}" class="btn btn-sm btn-secondary" aria-expanded="false">
                                         Mulai test
                                     </a>
                                 </td>

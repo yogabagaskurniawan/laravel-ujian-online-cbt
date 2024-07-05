@@ -26,7 +26,7 @@
                             </div>
                         @endforelse
                         @if ($questions->isNotEmpty())
-                        <div class="text-center">
+                            <div class="text-center">
                                 @if (count($questions) < $limitData)
                                     <button class="btn btn-info btn-lg mb-2 mt-5 _effect--ripple waves-effect waves-light" wire:loading>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader spin me-2">

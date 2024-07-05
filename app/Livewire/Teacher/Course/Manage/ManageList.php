@@ -12,6 +12,8 @@ class ManageList extends Component
 {
     use LivewireAlert;
     public $limitData, $course;
+    public $totalQuestion;
+    public $totalQuestionCorrect;
     public $search = '';
     public $studentCount;
     public function mount($uid)
@@ -23,12 +25,41 @@ class ManageList extends Component
         }
 
         $this->course = Course::where('uid',$uid)->where('user_id',auth()->user()->id)->first();
+        if ($this->course) {
+            $this->totalQuestion = $this->course->totalQuestion;
+            $this->totalQuestionCorrect = $this->course->totalQuestionCorrect;
+        }
         $this->studentCount = Test_result::where('course_id', $this->course->id)->count();
     }
     public function render()
     {
         $questions = Question::where('course_id', $this->course->id)->search($this->search)->limit($this->limitData)->get();
-        return view('livewire.teacher.course.manage.manage-list', compact('questions'));
+        $questionCount = $questions->count();
+        return view('livewire.teacher.course.manage.manage-list', compact('questions', 'questionCount'));
+    }
+    public function updateSettingQuestion()
+    {
+        $validatedData = $this->validate([
+            'totalQuestion' => 'required|integer|min:1',
+            'totalQuestionCorrect' => 'required|integer|min:1',
+        ]);
+
+        if ($this->totalQuestion <= $this->totalQuestionCorrect) {
+            $this->alert('error', 'Jumlah soal harus lebih besar dari jumlah soal yang harus benar');
+            return back();
+        }
+        
+        if ($validatedData) {
+            if ($this->course) {
+                // Update existing setting
+                $this->course->update([
+                    'totalQuestion' => $this->totalQuestion,
+                    'totalQuestionCorrect' => $this->totalQuestionCorrect,
+                ]);
+            }
+        }
+        $this->alert('success', 'Pengaturan soal berhasil disimpan');
+        return back();
     }
     public function deleteQuestion($id)
     {

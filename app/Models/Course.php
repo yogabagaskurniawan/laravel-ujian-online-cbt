@@ -13,6 +13,10 @@ class Course extends Model
     {
         return $this->belongsTo('App\Models\Category', 'category_id', 'id');
     }
+    public function getTestResult()
+    {
+        return $this->hasMany(Test_result::class, 'course_id', 'id');
+    }
     public function scopeSearch($query, $search)
     {
         if ($search) {
@@ -26,5 +30,9 @@ class Course extends Model
     public function getQuestion()
     {
         return $this->hasMany(Question::class);
+    }
+    public function getAnswerStudent()
+    {
+        return $this->hasMany(Answer_student::class, 'course_id', 'id');
     }
 }

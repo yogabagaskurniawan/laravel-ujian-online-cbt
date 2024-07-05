@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('course_id');
             $table->integer('student_id');
             $table->enum('status',['not_started','fail', 'succeed'])->default('not_started');
+            $table->integer('correctAnswers')->nullable();
             $table->string('certificate')->nullable();
             $table->timestamps();
         });

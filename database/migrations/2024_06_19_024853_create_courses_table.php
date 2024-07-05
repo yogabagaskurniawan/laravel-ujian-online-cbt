@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('category_id');
             $table->string('uid');
             $table->string('name');
+            $table->integer('totalQuestion')->nullable();
+            $table->integer('totalQuestionCorrect')->nullable();
             $table->timestamps();
         });
     }
