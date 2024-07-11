@@ -8,7 +8,7 @@
             </div> --}}
             <h5 class="error-title mt-3">Selamat! <br> telah menyelesaikan tes</h5>
             <p class="error-text">Semoga Anda mendapatkan hasil yang lebih baik untuk segera mempersiapkan <br> karir masa depan Anda yang hebat</p>
-            <a href="{{ route('rapportDetail', $course->uid) }}" class="btn btn-dark mt-4">Lihat Hasil Test</a>
+            <a href="{{ route('rapportList', $course->uid) }}" class="btn btn-dark mt-4">Lihat Hasil Test</a>
         </div>
     </div>
 </div>

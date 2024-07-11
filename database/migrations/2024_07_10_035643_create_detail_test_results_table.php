@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('test_results', function (Blueprint $table) {
+        Schema::create('detail_test_results', function (Blueprint $table) {
             $table->id();
-            $table->integer('course_id');
-            $table->integer('student_id');
+            $table->integer('test_result_id');
             $table->string('uid');
-            $table->string('certificate')->nullable();
+            $table->enum('status',['not_started','fail', 'succeed'])->default('not_started');
+            $table->integer('correctAnswers')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('test_results');
+        Schema::dropIfExists('detail_test_results');
     }
 };

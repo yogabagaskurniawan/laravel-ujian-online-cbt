@@ -44,9 +44,9 @@ class Test_result extends Model
                     });
             });
 
-            if ($statusKeyword) {
-                $query->orWhere('status', 'LIKE', '%' . $statusKeyword . '%');
-            }
+            // if ($statusKeyword) {
+            //     $query->orWhere('status', 'LIKE', '%' . $statusKeyword . '%');
+            // }
 
             // Tambahan untuk pencarian berdasarkan nama course
             $query->orWhereHas('getCourse', function ($q) use ($keyword) {

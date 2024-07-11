@@ -7,11 +7,12 @@ use App\Models\Course;
 use Livewire\Component;
 use App\Models\Test_result;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Ramsey\Uuid\Uuid;
 
 class StudentAdd extends Component
 {
     use LivewireAlert;
-    public $course;
+    public $course, $studentCount;
     public $email;
     public function mount($uid)
     {
@@ -21,6 +22,13 @@ class StudentAdd extends Component
         }
 
         $this->course = Course::where('uid',$uid)->where('user_id',auth()->user()->id)->first();
+        
+        $this->studentCount = Test_result::where('course_id', $this->course->id)
+        ->whereHas('getUser', function ($query) {
+            $query->where('role', 'student');
+        })
+        ->count();
+        $this->studentCount = $this->studentCount ?: 0;
     }
     public function addStudent()
     {
@@ -36,9 +44,10 @@ class StudentAdd extends Component
                 // Tambahkan murid ke dalam tabel Test_result
                 Test_result::create([
                     'course_id' => $this->course->id,
-                    'student_id' => $user->id
+                    'student_id' => $user->id,
+                    'uid' => Uuid::uuid4()->toString(),
                 ]);
-    
+
                 $this->flash('success', 'Murid berhasil ditambahkan');
             } else {
                 // Jika user tidak ditemukan 

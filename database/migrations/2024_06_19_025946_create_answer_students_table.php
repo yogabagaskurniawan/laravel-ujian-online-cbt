@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->integer('course_id');
             $table->integer('question_id');
-            $table->integer('question_choice_id');
+            // $table->integer('question_choice_id');
             $table->integer('student_id');
+            $table->integer('detail_test_result_id');
             $table->boolean('is_correct');
             $table->timestamps();
         });

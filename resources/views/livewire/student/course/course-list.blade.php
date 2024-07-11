@@ -36,14 +36,15 @@
                                 <td>{{ $myCourse->getCourse->name }}</td>
                                 <td>{{ $myCourse->created_at }}</td>
                                 <td>{{ $myCourse->getCourse->getCategory->name }}</td>
-                                {{-- <td class="text-center">
-                                </td> --}}
                                 <td class="text-center">
-                                    <a href="{{ route('rapportDetail', $myCourse->getCourse->uid) }}" class="btn btn-sm btn-success" aria-expanded="false">
-                                        Hasil test
-                                    </a>
                                     <a href="{{ route('courseTest', $myCourse->getCourse->uid) }}" class="btn btn-sm btn-secondary" aria-expanded="false">
                                         Mulai test
+                                    </a>
+                                    {{-- <a href="{{ route('rapportList', $myCourse->getCourse->uid) }}" class="btn btn-sm btn-success" aria-expanded="false">
+                                        Hasil test
+                                    </a> --}}
+                                    <a href="{{ route('rapportList', ['uid' => $myCourse->getCourse->uid, 'studentId' => null ]) }}" class="btn btn-sm btn-success" aria-expanded="false">
+                                        Hasil test
                                     </a>
                                 </td>
                             </tr>

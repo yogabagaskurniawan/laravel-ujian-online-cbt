@@ -23,6 +23,16 @@
     <link href="/admin/src/assets/css/dark/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link rel="stylesheet" type="text/css" href="/admin/src/assets/css/light/elements/alert.css">
+
+    <link href="/admin/src/assets/css/light/components/accordions.css" rel="stylesheet" type="text/css">
+    <link href="/admin/src/assets/css/dark/components/accordions.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="/admin/src/plugins/src/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css">
+    <link rel="stylesheet" type="text/css" href="/admin/src/plugins/src/glightbox/glightbox.min.css">
+    <link rel="stylesheet" type="text/css" href="/admin/src/plugins/src/splide/splide.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/admin/src/assets/css/light/components/tabs.css">
+    <link rel="stylesheet" type="text/css" href="/admin/src/assets/css/light/apps/ecommerce-details.css">
 </head>
 <body class="layout-boxed">
     <!--  BEGIN NAVBAR  -->
@@ -370,6 +380,7 @@
     <script src="/admin/src/plugins/src/waves/waves.min.js"></script>
     <script src="/admin/layouts/modern-light-menu/app.js"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
+    <script src="/admin/src/plugins/src/global/vendors.min.js"></script>
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <script src="/admin/src/plugins/src/apex/apexcharts.min.js"></script>
@@ -377,6 +388,11 @@
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="/admin/src/plugins/src/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+    <script src="/admin/src/plugins/src/glightbox/glightbox.min.js"></script>
+    <script src="/admin/src/plugins/src/splide/splide.min.js"></script>
+    <script src="/admin/src/assets/js/apps/ecommerce-details.js"></script>    
 
     <x-livewire-alert::scripts />
     <x-livewire-alert::flash />

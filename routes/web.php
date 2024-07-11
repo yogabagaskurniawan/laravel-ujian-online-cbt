@@ -52,5 +52,9 @@ Route::prefix('student')->middleware(['auth','student'])->group(function () {
 
     Route::get('/course/{uid}', '\App\Livewire\Student\Course\TestCourse\TestCourse')->name('courseTest');
     Route::get('/course/finished/{uid}', '\App\Livewire\Student\Course\TestCourse\FinishedWorking')->name('finishedWorking');
-    Route::get('/course/rapport/{uid}', '\App\Livewire\Student\Course\TestCourse\RapportDetail')->name('rapportDetail');
+});
+
+Route::prefix('rapport')->middleware(['auth'])->group(function () {
+    Route::get('/course/rapport-list/{uid}/{studentId?}', '\App\Livewire\Rapport\RapportList')->name('rapportList');
+    Route::get('/course/rapport/{uid}/{studentId?}', '\App\Livewire\Rapport\RapportDetail')->name('rapportDetail');
 });

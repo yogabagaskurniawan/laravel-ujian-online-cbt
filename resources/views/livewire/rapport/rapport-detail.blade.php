@@ -2,7 +2,7 @@
     <div class="page-meta">
         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/student/course/list-course">Kelas saya</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('rapportList', ['uid' => $detailTestResult->getTestResult->getCourse->uid, 'studentId' => $detailTestResult->getTestResult->getUser->id]) }}">List Rapport</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Hasil test</li>
             </ol>
         </nav>
@@ -13,20 +13,20 @@
                 <div class="">
                     <div class="row">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                            <h4 class="mb-0">{{ $course->name }}</h4>
-                            <p class="">{{ $course->getCategory->name }}</p>
+                            <h4 class="mb-0">{{ $detailTestResult->getTestResult->getCourse->name }}</h4>
+                            <p class="">{{ $detailTestResult->getTestResult->getCourse->getCategory->name }}</p>
                             <p>
                                 <svg class="mb-1 me-1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                                benar {{ $testResult->correctAnswers }} dari {{ $totalQuestions }} soal
+                                benar {{ $detailTestResult->correctAnswers }} dari {{ $totalQuestions ?? 0 }} soal
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between">
                     <h5 class="mt-2 d-flex align-items-center">
-                        @if ($testResult->status  == "fail")
+                        @if ($detailTestResult->status  == "fail")
                             Hasil Test <span class="badge badge-light-danger ms-3">Gagal</span>
-                        @elseif ($testResult->status  == "succeed")
+                        @elseif ($detailTestResult->status  == "succeed")
                             Hasil Test <span class="badge badge-light-success ms-3">Lolos</span>
                         @endif
                     </h5>
