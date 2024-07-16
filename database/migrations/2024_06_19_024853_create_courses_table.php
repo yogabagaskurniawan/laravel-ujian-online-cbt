@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('totalQuestion')->nullable();
             $table->integer('totalQuestionCorrect')->nullable();
+            $table->boolean('testAttempts')->nullable();
             $table->timestamps();
         });
     }

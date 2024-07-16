@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('course_id');
             $table->integer('student_id');
             $table->string('uid');
-            $table->string('certificate')->nullable();
+            // $table->string('certificate')->nullable();
             $table->timestamps();
         });
     }

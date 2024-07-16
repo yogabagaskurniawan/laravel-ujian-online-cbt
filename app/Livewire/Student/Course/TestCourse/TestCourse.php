@@ -23,12 +23,23 @@ class TestCourse extends Component
     public function mount($uid)
     {
         $this->limitData = 10;
-        // Pastikan hanya teacher yang bisa mengakses ini
+        // Pastikan hanya student yang bisa mengakses ini
         if (auth()->user()->role != 'student') {
             abort(403, 'Unauthorized');
         }
 
         $this->course = Course::where('uid',$uid)->first();
+
+        // Mengecek apakah murid sudah pernah mengerjakan test ini
+        $answerStudent = Answer_student::where('student_id', auth()->id())
+                                    ->where('course_id', $this->course->id)
+                                    ->first();
+
+        if ($this->course->testAttempts == 0 && $answerStudent) {
+            // Jika testAttempts = 0 dan murid sudah pernah mengerjakan test, tidak diizinkan mengakses lagi
+            $this->flash('error', 'Anda sudah mengerjakan test ini, tidak dapat mengakses lagi.');
+            return redirect()->to('/student/course/list-course');
+        }
     }
     public function render()
     {

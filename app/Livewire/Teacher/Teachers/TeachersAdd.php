@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Livewire\Auth;
+namespace App\Livewire\Teacher\Teachers;
 
-use App\Models\Detail_user;
-use Livewire\Component;
-use Livewire\Attributes\Layout;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Models\User;
+use Livewire\Component;
+use App\Models\Detail_user;
 use Illuminate\Support\Facades\Hash;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-class Register extends Component
+class TeachersAdd extends Component
 {
     use LivewireAlert;
-
-    #[Layout('components.layouts.auth')]
     public $name;
     public $phone;
     public $address;
     public $email;
     public $password;
     public $confirm_password;
-
-    public function registerCurrentUser()
+    public function render()
+    {
+        return view('livewire.teacher.teachers.teachers-add');
+    }
+    public function addTeacher()
     {
         $this->validate([
             'name' => 'required|string|max:255',
@@ -35,7 +35,7 @@ class Register extends Component
         $user = User::create([
             'email' => $this->email,
             'password' => Hash::make($this->password),
-            'role' => 'student' 
+            'role' => 'teacher' 
         ]);
         
         Detail_user::create([
@@ -45,15 +45,7 @@ class Register extends Component
             'address' => $this->address,
         ]);
 
-        auth()->login($user);
-
-        session()->regenerate();
-
-        return redirect('/student/dashboard');
-    }
-
-    public function render()
-    {
-        return view('livewire.auth.register');
+        $this->flash('success', 'Data guru berhasil ditambahkan');
+        return redirect()->to('/teacher/teachers/list-teachers');
     }
 }

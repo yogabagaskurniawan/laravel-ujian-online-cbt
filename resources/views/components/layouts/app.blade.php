@@ -254,7 +254,7 @@
                             <img src="/admin/src/assets/img/profile-30.png" alt="avatar">
                         </div>
                         <div class="profile-content">
-                            <h6 class="">{{ auth()->user()->getDetailUser->name }}</h6>
+                            <h6 style="color: #3b3f5c;">{{ auth()->user()->getDetailUser->name }}</h6>
                             <p class="">{{ auth()->user()->email }}</p>
                         </div>
                     </div>
@@ -271,10 +271,29 @@
                             </a>
                         </li>
 
+                        <li class="menu  @if(Request::segment(2) == 'teachers') active @endif">
+                            <a href="#teachers" data-bs-toggle="collapse" @if(Request::segment(2) == 'teachers') aria-expanded="true" @endif class="dropdown-toggle">
+                                <div class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>                                    <span>List Guru</span>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </a>
+                            <ul class="collapse submenu list-unstyled @if(Request::segment(2) == 'teachers') show @endif" id="teachers" data-bs-parent="#accordionExample">
+                                <li class="@if(Request::segment(3) == 'add-teachers') active @endif" >
+                                    <a href="{{ ('/teacher/teachers/add-teachers') }}"> Tambah Guru</a>
+                                </li>
+                                <li class="@if(Request::segment(3) == 'list-teachers') active @endif">
+                                    <a href="{{ ('/teacher/teachers/list-teachers') }}">List Guru</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="menu  @if(Request::segment(2) == 'category') active @endif">
                             <a href="#category" data-bs-toggle="collapse" @if(Request::segment(2) == 'category') aria-expanded="true" @endif class="dropdown-toggle">
                                 <div class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>                                <span>Kategory</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>                                <span>Kategori</span>
                                 </div>
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>

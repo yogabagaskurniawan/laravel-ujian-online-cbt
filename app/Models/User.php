@@ -53,4 +53,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(Test_result::class, 'student_id');
     }
+    public function scopeSearch($query, $keyword)
+    {
+        return $query->where('email', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('getDetailUser', function ($q) use ($keyword) {
+                $q->where('name', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('address', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('phone', 'LIKE', '%' . $keyword . '%');
+            });
+    }
+    // public function scopeSearch($query, $keyword)
+    // {
+    //     return $query->where(function ($query) use ($keyword) {
+    //         $query->whereHas('getUser', function ($q) use ($keyword) {
+    //             $q->where('email', 'LIKE', '%' . $keyword . '%')
+    //                 ->orWhereHas('getDetailUser', function ($q) use ($keyword) {
+    //                     $q->where('name', 'LIKE', '%' . $keyword . '%');
+    //                 });
+    //         });
+    //     });
+    // }
 }

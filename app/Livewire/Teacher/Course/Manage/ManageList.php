@@ -15,7 +15,7 @@ class ManageList extends Component
     public $totalQuestion;
     public $totalQuestionCorrect;
     public $search = '';
-    public $studentCount;
+    public $studentCount, $testAttempts;
     public function mount($uid)
     {
         $this->limitData = 10;
@@ -28,6 +28,7 @@ class ManageList extends Component
         if ($this->course) {
             $this->totalQuestion = $this->course->totalQuestion;
             $this->totalQuestionCorrect = $this->course->totalQuestionCorrect;
+            $this->testAttempts = $this->course->testAttempts;
         }
         $this->studentCount = Test_result::where('course_id', $this->course->id)->count();
     }
@@ -42,25 +43,27 @@ class ManageList extends Component
         $validatedData = $this->validate([
             'totalQuestion' => 'required|integer|min:1',
             'totalQuestionCorrect' => 'required|integer|min:1',
+            'testAttempts' => 'required|boolean',
         ]);
-
+    
         if ($this->totalQuestion <= $this->totalQuestionCorrect) {
             $this->alert('error', 'Jumlah soal harus lebih besar dari jumlah soal yang harus benar');
             return back();
         }
-        
+    
         if ($validatedData) {
             if ($this->course) {
                 // Update existing setting
                 $this->course->update([
                     'totalQuestion' => $this->totalQuestion,
                     'totalQuestionCorrect' => $this->totalQuestionCorrect,
+                    'testAttempts' => $this->testAttempts,
                 ]);
             }
         }
         $this->alert('success', 'Pengaturan soal berhasil disimpan');
         return back();
-    }
+    }    
     public function deleteQuestion($id)
     {
         // Cari kategori berdasarkan id

@@ -40,7 +40,9 @@ class Test_result extends Model
             $query->whereHas('getUser', function ($q) use ($keyword) {
                 $q->where('email', 'LIKE', '%' . $keyword . '%')
                     ->orWhereHas('getDetailUser', function ($q) use ($keyword) {
-                        $q->where('name', 'LIKE', '%' . $keyword . '%');
+                        $q->where('name', 'LIKE', '%' . $keyword . '%')
+                            ->orWhere('address', 'LIKE', '%' . $keyword . '%')
+                            ->orWhere('phone', 'LIKE', '%' . $keyword . '%');
                     });
             });
 

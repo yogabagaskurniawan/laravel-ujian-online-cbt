@@ -28,6 +28,9 @@ Route::post('/logout', function(){
 Route::prefix('teacher')->middleware(['auth','teacher'])->group(function () {
     Route::get('/dashboard','\App\Livewire\Teacher\Dashboard\Dashboard');
 
+    Route::get('/teachers/list-teachers', '\App\Livewire\Teacher\Teachers\TeachersList');
+    Route::get('/teachers/add-teachers', '\App\Livewire\Teacher\Teachers\TeachersAdd');
+
     Route::get('/category/list-category', '\App\Livewire\Teacher\Category\CategoryList');
     Route::get('/category/add-category', '\App\Livewire\Teacher\Category\CategoryAdd');
     Route::get('/category/edit-category/{uid}', '\App\Livewire\Teacher\Category\CategoryEdit')->name('categoryEdit');
@@ -42,7 +45,7 @@ Route::prefix('teacher')->middleware(['auth','teacher'])->group(function () {
     
     Route::get('/course/list-course/student/{uid}', '\App\Livewire\Teacher\Course\Student\StudentList')->name('studentList');
     Route::get('/course/list-course/add-student/{uid}', '\App\Livewire\Teacher\Course\Student\StudentAdd')->name('studentAdd');;
-    Route::get('/course/list-course/edit-student/{uid}', '\App\Livewire\Teacher\Course\Student\StudentEdit')->name('studentEdit');
+    // Route::get('/course/list-course/edit-student/{uid}', '\App\Livewire\Teacher\Course\Student\StudentEdit')->name('studentEdit');
 });
 
 Route::prefix('student')->middleware(['auth','student'])->group(function () {
