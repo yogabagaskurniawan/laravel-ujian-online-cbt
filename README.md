@@ -4,11 +4,29 @@
 
 Membantu perusahaan, sekolah, organisasi lainnya dalam melakukan test kompentensi secara online, misalnya seorang Guru yang ingin menguji muridnya dalam subjek tertentu.
 
-## Screenshots
+## Model databases
 
-<!-- ![preview img](/preview.png) -->
+![alt text](https://github.com/yogabagaskurniawan/laravel-ujian-online-cbt/blob/master/public/dokumentasi/Model%20databases.png?raw=true)
 
-<!-- ![alt text](https://github.com/yogabagaskurniawan/Quick_count/blob/master/public/documentasi/screencapture-quick-count-test-2023-11-22-15_15_49.png?raw=true) -->
+## Tampilan List Kelas ( teacher )
+
+![alt text](https://github.com/yogabagaskurniawan/laravel-ujian-online-cbt/blob/master/public/dokumentasi/1.png?raw=true)
+
+## Tampilan Manage Pertanyaan ( teacher )
+
+![alt text](https://github.com/yogabagaskurniawan/laravel-ujian-online-cbt/blob/master/public/dokumentasi/2.png?raw=true)
+
+## Tampilan Tambah Pertanyaan ( teacher )
+
+![alt text](https://github.com/yogabagaskurniawan/laravel-ujian-online-cbt/blob/master/public/dokumentasi/3.png?raw=true)
+
+## Tampilan Mengerjakan Soal ( student )
+
+![alt text](https://github.com/yogabagaskurniawan/laravel-ujian-online-cbt/blob/master/public/dokumentasi/4.png?raw=true)
+
+## Tampilan Hasil Mengerjakan Soal ( student )
+
+![alt text](https://github.com/yogabagaskurniawan/laravel-ujian-online-cbt/blob/master/public/dokumentasi/5.png?raw=true)
 
 ## feature
 
