@@ -2,11 +2,12 @@
 
 namespace App\Livewire\Teacher\Course\Manage;
 
+use Ramsey\Uuid\Uuid;
 use App\Models\Course;
 use Livewire\Component;
 use App\Models\Question;
+use App\Models\Test_result;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Ramsey\Uuid\Uuid;
 
 class ManageEdit extends Component
 {
@@ -18,7 +19,7 @@ class ManageEdit extends Component
     public $answers = [];
     public $correctAnswer;
     public $uid;
-
+    public $studentCount;
     public function mount($uid)
     {
         // Pastikan hanya teacher yang bisa mengakses ini
@@ -38,6 +39,7 @@ class ManageEdit extends Component
                 $this->correctAnswer = $index + 1;
             }
         }
+        $this->studentCount = Test_result::where('course_id', $this->question->getCourse->id)->count();
     }
     public function render()
     {

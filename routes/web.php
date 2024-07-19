@@ -57,7 +57,10 @@ Route::prefix('student')->middleware(['auth','student'])->group(function () {
     Route::get('/course/finished/{uid}', '\App\Livewire\Student\Course\TestCourse\FinishedWorking')->name('finishedWorking');
 });
 
-Route::prefix('rapport')->middleware(['auth'])->group(function () {
-    Route::get('/course/rapport-list/{uid}/{studentId?}', '\App\Livewire\Rapport\RapportList')->name('rapportList');
-    Route::get('/course/rapport/{uid}/{studentId?}', '\App\Livewire\Rapport\RapportDetail')->name('rapportDetail');
+Route::middleware(['auth'])->group(function () {
+    Route::get('rapport/course/rapport-list/{uid}/{studentId?}', '\App\Livewire\Rapport\RapportList')->name('rapportList');
+    Route::get('rapport/course/rapport/{uid}/{studentId?}', '\App\Livewire\Rapport\RapportDetail')->name('rapportDetail');
+
+    Route::get('/account/update-data', '\App\Livewire\Profile\PersonalData');
+    Route::get('/account/update-password', '\App\Livewire\Profile\UpdatePassword');
 });

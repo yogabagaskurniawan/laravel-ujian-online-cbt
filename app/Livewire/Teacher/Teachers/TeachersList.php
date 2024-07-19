@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Teacher\Teachers;
 
+use App\Models\Detail_user;
 use App\Models\User;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -29,5 +30,24 @@ class TeachersList extends Component
     public function addLimitData()
     {
         $this->limitData += 10;
+    }
+    public function deleteTeacher($id)
+    {
+        // Cari guru berdasarkan id
+        $teacher = User::where('id', $id)->first();
+
+        if ($teacher) {
+            $detailTeacher = Detail_user::where('user_id', $teacher->id)->first();
+            $detailTeacher->delete();
+
+            // Hapus entri dari tabel category
+            $teacher->delete();
+
+            $this->alert('success', 'Berhasil menghapus Guru ini');
+        } else {
+            $this->alert('error', 'Guru tidak ditemukan');
+        }
+
+        return back();
     }
 }
