@@ -41,23 +41,29 @@ class StudentAdd extends Component
             $user = User::where('email', $this->email)->first();
     
             if ($user) {
-                // Tambahkan murid ke dalam tabel Test_result
-                Test_result::create([
-                    'course_id' => $this->course->id,
-                    'student_id' => $user->id,
-                    'uid' => Uuid::uuid4()->toString(),
-                ]);
-
-                $this->flash('success', 'Murid berhasil ditambahkan');
+                // Periksa apakah role user adalah "student"
+                if ($user->role === 'student') {
+                    // Tambahkan murid ke dalam tabel Test_result
+                    Test_result::create([
+                        'course_id' => $this->course->id,
+                        'student_id' => $user->id,
+                        'uid' => Uuid::uuid4()->toString(),
+                    ]);
+    
+                    $this->flash('success', 'Murid berhasil ditambahkan');
+                } else {
+                    $this->alert('error', 'Hanya pengguna dengan peran "student" yang dapat ditambahkan');
+                    return back();
+                }
             } else {
                 // Jika user tidak ditemukan 
-                $this->flash('error', 'Email tidak ditemukan di dalam sistem');
+                $this->alert('error', 'Email tidak ditemukan di dalam sistem');
+                return back();
             }
     
             return redirect()->to('/teacher/course/list-course/student/' . $this->course->uid);
         }
-    }
-    
+    }    
     public function render()
     {
         return view('livewire.teacher.course.student.student-add');
