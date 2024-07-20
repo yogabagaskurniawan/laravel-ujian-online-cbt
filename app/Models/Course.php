@@ -13,6 +13,10 @@ class Course extends Model
     {
         return $this->belongsTo('App\Models\Category', 'category_id', 'id');
     }
+    public function getUser()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
     public function getTestResult()
     {
         return $this->hasMany(Test_result::class, 'course_id', 'id');

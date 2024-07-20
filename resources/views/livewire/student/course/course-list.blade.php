@@ -25,6 +25,7 @@
                                 <th scope="col">Nama Kelas</th>
                                 <th scope="col">Tanggal Dibuat</th>
                                 <th scope="col">Kategori</th>
+                                <th scope="col">Nomer HP Guru</th>
                                 <th class="text-center" scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                                 <td>{{ $myCourse->getCourse->name }}</td>
                                 <td>{{ $myCourse->created_at }}</td>
                                 <td>{{ $myCourse->getCourse->getCategory->name }}</td>
+                                <td>{{ $myCourse->getCourse->getUser->getDetailUser->phone }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('courseTest', $myCourse->getCourse->uid) }}" class="btn btn-sm btn-secondary" aria-expanded="false">
                                         Mulai test

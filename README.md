@@ -1,4 +1,4 @@
-# Laravel 10 | PHP 8.2 - CBT Projects
+# Laravel 10 | PHP 8.2 | Livewire 3 - CBT Projects
 
 ## About
 
